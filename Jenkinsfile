@@ -9,7 +9,12 @@ pipeline {
         sh 'docker build -t johnsoncls2019/demo:latest .'
       }
     }
-    stage('Docker Push') {
+        stage('Test'){
+            steps {
+                echo 'Testing...' 
+            }
+        }
+stage('Docker Push') {
       agent any
       steps {
         withCredentials([usernamePassword(credentialsId: 'DockerHub', passwordVariable: 'Cdrespxy1', usernameVariable: 'johnsoncls2019')]) {
