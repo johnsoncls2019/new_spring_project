@@ -9,7 +9,7 @@ pipeline {
         sh 'docker build -t johnsoncls2019/demo:latest .'
       }
     }
-        stage('Test'){
+        stage('Docker Test'){
             steps {
                 echo 'Testing...' 
             }
