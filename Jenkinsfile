@@ -12,14 +12,15 @@ dockerImage = ''
     stage('Docker Build') {
       agent any
       steps {
-	dockerImage = docker.build registry + ":$BUILD_NUMBER"
-      }
+sh 'docker build -t johnsoncls2019/demo:latest .'
+}
     }
         stage('Docker Test'){
             steps {
                 echo 'Testing...' 
             }
         }
+
 stage('Deploy our image') {
 steps{
 script {
