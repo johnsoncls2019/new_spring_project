@@ -24,7 +24,7 @@ sh 'docker build -t johnsoncls2019/demo:latest .'
 stage('Deploy our image') {
 steps{
 script {
-docker.withRegistry( '', registryCredential ) {
+docker.withRegistry( 'DockerHub', registryCredential ) {
 dockerImage.push()          
         }
       }
