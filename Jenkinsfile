@@ -30,3 +30,4 @@ dockerImage.push()
     }
   }
 }
+}
