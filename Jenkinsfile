@@ -13,7 +13,7 @@ pipeline {
       agent any
       steps {
         withCredentials([usernamePassword(credentialsId: 'DockerHub', passwordVariable: 'Cdrespxy1', usernameVariable: 'johnsoncls2019')]) {
-          sh "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPassword}"
+          sh "docker login -u ${env.johnsoncls2019} -p ${env.Cdrespxy1}"
           sh 'docker push johnsoncls2019/demo:latest'
         }
       }
