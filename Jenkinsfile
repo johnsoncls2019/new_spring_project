@@ -1,8 +1,14 @@
 #!groovy
 
 pipeline {
+
   agent none
-  stages {
+environment {
+registry = "johnsoncls2019/spring-project"
+registryCredential = 'DockerHub'
+dockerImage = ''
+} 
+ stages {
     stage('Docker Build') {
       agent any
       steps {
