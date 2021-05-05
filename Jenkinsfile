@@ -28,5 +28,4 @@ agent {
 steps {
   sh 'docker login -u johnsoncls2019 -p Cdrespxy1'
   sh 'docker pull johnsoncls2019/image:version || (docker build -f dockerfile -t johnsoncls2019/image:version && docker push my-johnsoncls2019/image:version)'
-....
 }
