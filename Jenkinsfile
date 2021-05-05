@@ -31,9 +31,9 @@ sh 'docker build -t johnsoncls2019/demo:latest .'
 #sh "docker login -u ${USERNAME} -p ${PASSWORD}"
 #myImage.push("${env.BUILD_NUMBER}")
 #myImage.push("latest")
-}
-}
-}
-}
-}
-}
+#}
+#}
+#}
+#}
+#}
+#}
