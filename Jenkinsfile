@@ -34,3 +34,5 @@ myImage.push("latest")
 }
 }
 }
+}
+}
