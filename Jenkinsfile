@@ -28,7 +28,7 @@
 	        stage('Deploy'){
 	            steps {
 	                sh "exit"
-	                withCredentials([usernamePassword(credentialsId: 'DockerHub', passwordVariable: 'Cdrespxy1', usernameVariable: 'johnsoncls2019')]) {
+	                withCredentials([usernamePassword(credentialsId: 'docker-hub-credentials', passwordVariable: 'Cdrespxy1', usernameVariable: 'johnsoncls2019')]) {
 	                    /**
 	                    * Restart docker server
 	                    **/
