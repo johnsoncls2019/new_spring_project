@@ -1,47 +1,32 @@
-#!/usr/bin/env groovy
-	pipeline {
-	    agent any
-	    stages {
-	        stage('Build'){
-	            steps {
-	                echo 'Building...'
-	                script {
-	                    /**
-	                     * login to docker for private repository
-	                     * create credentials in jenkins page.
-	                     **/
-	                     withCredentials([usernamePassword(credentialsId: 'docker-hub-credentials', passwordVariable: 'Cdrespxy1', usernameVariable: 'johnsoncls2019')]) {
-                   		sh 'docker build -t johnsoncls2019/demo:latest .'
-	                            echo "${password} | docker login -u ${username} --password-stdin"
-	                         '''
-	                         def app = docker.build("docker-image")
-	                         app.push("latest")
-	                     }
-	                }
-	            }
-	        }
-	        stage('Test'){
-	            steps {
-	                echo 'Testing...' 
-	            }
-	        }
-	        stage('Deploy'){
-	            steps {
-	                sh "exit"
-	                withCredentials([usernamePassword(credentialsId: 'docker-hub-credentials', passwordVariable: 'Cdrespxy1', usernameVariable: 'johnsoncls2019')]) {
-	                    /**
-	                    * Restart docker server
-	                    **/
-				sh 'docker build -t johnsoncls2019/demo:latest .'
-	                        echo "${password} | docker login -u ${username} --password-stdin"
-	                        docker stop docker_image
-	                        docker rm docker_image
-	                        docker pull docker_image:latest
-	                        docker run -d -p 80:80 --name docker-image-name -t docker_image:latest
-	                    '''
-	                }
-	            }
-	        }
-	    }
-	}
+#!groovy
+
+pipeline {
+  agent none
+  stages {
+    stage('Maven Install') {
+      agent {
+        docker {
+          image 'maven:3.5.0'
+        }
+      }
+      steps {
+        sh 'mvn clean install'
+      }
+    }
+    stage('Docker Build') {
+      agent any
+      steps {
+        sh 'docker build -t johnsoncls2019/demo:latest .'
+      }
+    }
+    stage('Docker Push') {
+      agent any
+      steps {
+        withCredentials([usernamePassword(credentialsId: 'docker-hub-credential', passwordVariable: 'Cdrespxy1', usernameVariable: 'johnsoncls2019')]) {
+          sh "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPassword}"
+          sh 'docker push johnsoncls2019/demo:latest'
+        }
+      }
+    }
+  }
 }
