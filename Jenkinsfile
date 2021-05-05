@@ -5,7 +5,7 @@ pipeline {
   agent none
 environment {
 registry = "johnsoncls2019/spring-project"
-registryCredential = 'DockerHub'
+registryCredential = 'dockerhub'
 dockerImage = ''
 } 
  stages {
