@@ -27,7 +27,7 @@ agent {
 }
 steps {
   sh 'docker login -u johnsoncls2019 -p Cdrespxy1'
-  sh 'docker pull johnsoncls2019/demo:latest || (docker build -f dockerfile -t johnsoncls2019/demo:latest && docker push my-johnsoncls2019/demo:latest)'
+  sh 'docker push my-johnsoncls2019/demo:latest)'
 }
 }
 }
