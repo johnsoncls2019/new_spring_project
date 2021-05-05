@@ -17,3 +17,4 @@ sh 'docker build -t johnsoncls2019/demo:latest .'
         }
 }
 }
+}
