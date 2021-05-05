@@ -10,7 +10,7 @@
 	                     * login to docker for private repository
 	                     * create credentials in jenkins page.
 	                     **/
-	                     withCredentials([usernamePassword(credentialsId: 'DockerHub', passwordVariable: 'Cdrespxy1', usernameVariable: 'johnsoncls2019')]) {
+	                     withCredentials([usernamePassword(credentialsId: 'docker-hub-credentials', passwordVariable: 'Cdrespxy1', usernameVariable: 'johnsoncls2019')]) {
                    		sh 'docker build -t johnsoncls2019/demo:latest .'
 	                            echo "${password} | docker login -u ${username} --password-stdin"
 	                         '''
