@@ -26,9 +26,8 @@ steps {
 /* Finally, we'll push the image with two tags:
 * First, the incremental build number from Jenkins
 * Second, the 'latest' tag. */
-withCredentials([usernamePassword( credentialsId: 'DockerHub', usernameVariable: 'johnsoncls2019', passwordVariable: 'Cdrespxy1')]) {
-
-docker.withRegistry('', ) {
+withCredentials([usernamePassword( credentialsId: 'dockerhub', usernameVariable: 'johnsoncls2019', passwordVariable: 'Cdrespxy1')]) {
+docker.withRegistry('', 'dockerhub') {
 sh "docker login -u ${johnsoncls2019} -p ${Cdrespxy1}"
 myImage.push("${env.BUILD_NUMBER}")
 myImage.push("latest")
