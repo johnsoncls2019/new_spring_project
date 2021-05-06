@@ -4,7 +4,7 @@ git credentialsId: 'git-creds', url: 'https://github.com/johnsoncls2019/spring_p
 }
 stage ('Mvn package') {
 def mvnHome = tool name: 'localMaven', type: 'maven'
-def mvnCMD = "${mvnHome}/usr/bin/mvn"
+def mvnCMD = "${mvnHome}/bin/mvn"
 sh "${mvnCMD} mvn clean package"
 }
 stage ('Build Docker image') {
