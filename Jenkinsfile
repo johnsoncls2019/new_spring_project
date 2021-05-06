@@ -11,8 +11,8 @@ stage ('Build Docker image') {
 sh 'docker build -t johnsoncls2019/demo .'
 }
 stage ('Push docker image') {
-withCredentials ([strring(credentialsId: 'docker-pwd', variable: 'docker-pwd' )]) {
-sh docker login -u johnsoncls2019 -p ${dockerhubPwd}'
+withCredentials([strring(credentialsId: 'docker-pwd', variable: 'dockerHubpwd')]) {
+sh "docker login -u johnsoncls2019 -p ${dockerhubPwd}"
 }
 sh 'docker push johnsoncls2019/demo:2.0.0 .'
 }
