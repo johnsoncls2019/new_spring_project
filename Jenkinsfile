@@ -9,7 +9,7 @@ stage ('Push docker image') {
 withCredentials([string(credentialsId: 'docker-pwd', variable: 'dockerHubPwd')]) {
 sh "docker login -u johnsoncls2019 -p ${dockerHubPwd}"
 }
-sh 'docker push johnsoncls2019/demo 2.0.0'
+sh 'docker push johnsoncls2019/demo'
 }
 stage ('Run container on Dev server') { 
 def dockerRun = 'docker-run -p 8080:8080 -d --name AchiStar Technologies johnsoncls2019/demo:2.0.0 .'
