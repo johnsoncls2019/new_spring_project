@@ -3,8 +3,8 @@ stage ('SCM Checkout' ) {
 git credentialsId: 'git-creds', url: 'https://github.com/johnsoncls2019/spring_project.git'
 }
 stage ('Mvn package') {
-def vvnHome = tool name: 'maven-3', type: 'maven'
-def MvnCMD = "${mvnHome} /usr/share/maven"
+def mvnHome = tool name: 'maven-3', type: 'maven'
+def mvnCMD = "${mvnHome} /usr/share/maven"
 sh "${mvnCMD} clean package"
 }
 stage ('Build Docker image') {
