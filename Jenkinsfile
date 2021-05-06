@@ -1,6 +1,6 @@
 node {
 stage ('SCM Checkout' ) {
-git credentialsId: 'git-creds', url='https://github.com/johnsoncls2019/spring_project.git'
+git credentialsId: 'git-creds', url: 'https://github.com/johnsoncls2019/spring_project.git'
 }
 stage ('Mvn package') {
 def vvnHome = tool name: 'Maven-3', type: 'maven'
