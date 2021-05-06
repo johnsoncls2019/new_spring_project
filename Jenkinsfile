@@ -2,11 +2,6 @@ node {
 stage ('SCM Checkout' ) {
 git credentialsId: 'git-creds', url: 'https://github.com/johnsoncls2019/spring_project.git'
 }
-#stage ('Mvn package') {
-#def mvnHome = tool name: 'localMaven', type: 'maven'
-#def mvnCMD = "${mvnHome}/usr/bin/mvn"
-#sh "${mvnCMD} clean package"
-#}
 stage ('Build Docker image') {
 sh 'docker build -t johnsoncls2019/demo .'
 }
