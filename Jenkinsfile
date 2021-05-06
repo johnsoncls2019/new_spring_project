@@ -14,7 +14,7 @@ sh 'docker push johnsoncls2019/demo'
 stage ('Run container on Dev server') { 
 def dockerRun = 'docker-run -p 8080:8080 -d --name AchiStar Technologies johnsoncls2019/demo'
 sshagent (['dev-server']) {
-    sh "ssh -o StrictHostKeyChecking=no root@192.168.44.169 ${dockerRun}" 
+    sh "ssh -o StrictHostKeyChecking=no -1 root@192.168.44.169 ${dockerRun}" 
 }
 }
 }
