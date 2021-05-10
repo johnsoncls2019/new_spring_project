@@ -20,6 +20,10 @@ stage ('Run container on Dev server') {
 def dockerRun = 'docker run -p 5000:5000 -d --name AchiStarTechnologies johnsoncls2019/demo2.0.0'
 sshagent (['dev-server']) {
 sh "ssh -o StrictHostKeyChecking=no root@192.168.44.169 ${dockerRun}" 
+react:
+            tty: true //NOTE
+            build: dockerreact
+            ports: - "5000:5000"
 }
 }
 }
