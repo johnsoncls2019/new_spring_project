@@ -22,7 +22,7 @@ sshagent (['dev-server']) {
 sh "ssh -o StrictHostKeyChecking=no root@192.168.44.169 ${dockerRun}" 
 react:
             tty: true //NOTE
-            build: demo2.0.0 
+            build: demo2.0.0 . 
             ports: - "5000:5000"
 }
 }
