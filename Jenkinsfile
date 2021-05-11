@@ -18,7 +18,6 @@ sh 'docker push johnsoncls2019/demo2.0.0'
 }
 stage ('Run container on Dev server') { 
 def dockerRun = 'docker run -p 5000:5000 -d -t --name AchiStarTechnologies johnsoncls2019/demo2.0.0'
-docker rm --force AchiStarTechnologies
 sh "ssh -o StrictHostKeyChecking=no root@192.168.44.169 ${dockerRun}" 
 }
 }
