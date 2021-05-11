@@ -21,3 +21,5 @@ def dockerRun = 'docker run -p 5000:5000 -d  -t --name AchiStarTechnologies john
 sshagent([dev-server]) {
 sh "ssh -o StrictHostKeyChecking=no root@192.168.44.169 ${dockerRun}" 
 }
+}
+}
