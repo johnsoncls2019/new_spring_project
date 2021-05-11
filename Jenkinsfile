@@ -21,4 +21,4 @@ def dockerRun = 'docker run -p 5000:5000 -d --name AchiStarTechnologies johnsonc
 sh "ssh -o StrictHostKeyChecking=no root@192.168.44.169 ${dockerRun}" 
 }
 }
-}
+
