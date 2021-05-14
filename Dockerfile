@@ -10,5 +10,5 @@ RUN mvn -f /home/mchrist1/demo/spring_project/pom.xml clean package
 # Package stage
 #
 FROM openjdk:11-jre-slim
-EXPOSE 8080 
+EXPOSE 5000 
 ENTRYPOINT ["java","-jar","/usr/local/lib/demo.jar"]
