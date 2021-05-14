@@ -11,4 +11,4 @@ RUN mvn -f /home/mchrist1/demo/spring_project/pom.xml clean package
 #
 FROM openjdk:11-jre-slim
 EXPOSE 5000 
-ENTRYPOINT ["java","-jar","/usr/local/lib/demo.jar"]
+ENTRYPOINT ["java","-jar","/home/mchrist1/demo/spring_project/Achistartechnologies"]
