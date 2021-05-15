@@ -14,7 +14,7 @@ stage ('Push docker image') {
 withCredentials([string(credentialsId: 'docker-pwd', variable: 'dockerHubPwd')]) {
 sh "docker login -u johnsoncls2019 -p ${dockerHubPwd}"
 }
-sh 'docker push johnsoncls2019/demo2.0.0:AchiStarTechnologies'
+sh 'docker push johnsoncls2019/demo2.0.0'
 }
 stage ('Run container on Dev server') { 
 def dockerRun = 'docker run -p 5000:5000 -d  -t --name AchiStarTechnologies johnsoncls2019/demo'
