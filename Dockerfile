@@ -15,7 +15,5 @@ FROM openjdk:11-jre-slim
 WORKDIR /build/
 COPY --from=build /build/target/demo-0.0.1-SNAPSHOT.jar /demo.jar 
 EXPOSE 5000 
-ENTRYPOINT ["java", "-jar", "demo-0.0.1-SNAPSHOT.jar"] 
-# set the startup command to execute the jar
-CMD ["java", "-jar", "/demo.jar"]
+ENTRYPOINT ["java", "-jar", "demo.jar"] 
 
