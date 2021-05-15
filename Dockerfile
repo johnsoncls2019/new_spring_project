@@ -13,7 +13,7 @@ RUN mvn package
 
 FROM openjdk:11-jre-slim
 WORKDIR /build/
-COPY --from=MAVEN_BUILD /build/target/demo-0.0.1-SNAPSHOT.jar /app/
+COPY --from=maven_build /build/target/demo-0.0.1-SNAPSHOT.jar /app/
 EXPOSE 5000 
 ENTRYPOINT ["java", "-jar", "demo-0.0.1-SNAPSHOT.jar"] 
 
