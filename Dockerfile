@@ -15,5 +15,5 @@ RUN sh -c 'touch demo-0.0.1-SNAPSHOT.jar'
 #
 FROM openjdk:11-jre-slim
 EXPOSE 5000 
-ENTRYPOINT ["-jar", "/opt/demo-0.0.1/lib/demo-0.0.1-SNAPSHOT.jar"] 
+ENTRYPOINT ["-jar", "/home/mchrist1/demo/spring_project/target/demo-0.0.1-SNAPSHOT.jar"] 
 
