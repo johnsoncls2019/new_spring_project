@@ -21,6 +21,7 @@ def dockerRun = 'docker run -p 5000:5000 -d -t --name AchistarTecnologies johnso
 sshagent(['aws_server']) {
 sh "ssh -o StrictHostKeyChecking=no -i /home/mchrist1/Downloads/newkey22.pem ubuntu@ec2-18-190-155-16.us-east-2.compute.amazonaws.com"
 }
+}
 stage ('Run container on Dev server') { 
 def dockerRun = 'docker run -p 5000:5000 -d  -t --name AchiStarTechnologies johnsoncls2019/springboot2.0.0'
 sshagent(['dev-server']) {
