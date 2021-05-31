@@ -8,7 +8,7 @@ def mvnCMD = "${mvnHome}/usr/bin/mvn"
 sh " mvn clean package"
 }
 stage ('Build Docker image') {
-sh "docker build -t johnsoncls2019/springboot2.0.0 ."
+sh "docker build -t springboot2.0.0 ."
 }
 stage ('Push docker image') {
 withCredentials([string(credentialsId: 'docker-pwd', variable: 'dockerHubPwd')]) {
