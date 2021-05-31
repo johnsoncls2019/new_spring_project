@@ -1,9 +1,9 @@
 node {
 stage ('SCM Checkout' ) {
-git credentialsId: 'git-creds', url: 'https://github.com/johnsoncls2019/new_spring_project.git'
+git credentialsId: 'git_creds2', url: 'https://github.com/johnsoncls2019/new_spring_project.git'
 }
 stage ('Mvn package') {
-def mvnHome = tool name: 'LocalMaven 3.8', type: 'maven'
+def mvnHome = tool name: 'LocalMaven 3.6.3', type: 'maven'
 def mvnCMD = "${mvnHome}/usr/bin/mvn"
 sh " mvn clean package"
 }
