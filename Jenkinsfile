@@ -17,12 +17,11 @@ sh "docker login -u johnsoncls2019 -p ${dockerHubPwd}"
 sh 'docker push johnsoncls2019/springboot'
 }
 stage ('Run Container on AWS Server') {
-def dockerRun = 'docker run -p 5000:5000 -d -t --name AchistarTecnologies johnsoncls2019/springboot'
 def dockerRemove = 'docker rm --force AchiStarTechnologies'
+def dockerRun = 'docker run -p 5000:5000 -d -t --name AchistarTecnologies johnsoncls2019/springboot'
 withAWSParameterStore(credentialsId: 'aws_server', regionName: 'us-east-1') {
 sh "${dockerRemove}"
 sh "${dockerRun}"
-
 }
 }
 stage ('Run container on Dev server') {
