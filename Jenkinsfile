@@ -18,8 +18,8 @@ sh 'docker push johnsoncls2019/springboot'
 }
 stage ('Run Container on AWS Server') {
 def dockerRun = 'docker run -p 5000:5000 -d -t --name AchistarTecnologies johnsoncls2019/springboot'
-withAWS(credentialsId: 'aws_server', regionName: 'us-east-1') {
-sh "ssh -i "/home/mchrist1/Downloads/newkey22.pem" ubuntu@ec2-18-190-155-16.us-east-2.compute.amazonaws.com ${dockerRun}"
+sshagent(['aws_server2']) {
+sh ""ssh -o StrictHostKeyChecking=no ec2-user@172.31.34.112 ${dockerRun}
 }
 }
 stage ('Run container on Dev server') {
