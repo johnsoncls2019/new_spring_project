@@ -20,8 +20,8 @@ stage ('Run Container on AWS Server') {
 def dockerRemove = 'docker rm --force AchiStarTechnologies'
 def dockerRun = 'docker run -p 5000:5000 -d -t --name AchistarTecnologies2 johnsoncls2019/springboot'
 withAWSParameterStore(credentialsId: 'aws_server', regionName: 'us-east-1') {
-sh "ssh -o StrictHostKeyChecking=no ec2-user@172.31.34.112 ${dockerRemove}"
-sh "ssh -o StrictHostKeyChecking=no ec2-user@172.31.34.112 ${dockerRun}" 
+sh " ssh -i "/home/mchrist1/Downloads/newkey22.pem" ubuntu@ec2-18-190-155-16.us-east-2.compute.amazonaws.com ${dockerRemove}"
+ sh "ssh -i "/home/mchrist1/Downloads/newkey22.pem" ubuntu@ec2-18-190-155-16.us-east-2.compute.amazonaws.com ${dockerRun}"
 }
 }
 stage ('Run container on Dev server') {
