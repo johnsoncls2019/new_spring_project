@@ -19,7 +19,7 @@ sh 'docker push johnsoncls2019/springboot'
 stage ('Run Container on AWS Server') {
 def dockerRemove = 'docker rm --force AchiStarTechnologies'
 def dockerRun = 'docker run -p 5000:5000 -d -t --name AchistarTecnologies2 johnsoncls2019/springboot'
-sshagent(['aws_server2']) {
+sshagent(credentials: ['server_aws'], ignoreMissing: true) {
 sh "ssh -o StrictHostKeyChecking=no ec2-user@172.31.34.112 ${dockerRun}"
 }
 }
