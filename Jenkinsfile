@@ -19,12 +19,13 @@ sh 'docker push johnsoncls2019/springboot'
 stage ('Run Container on AWS Server') {
 def dockerRemove = 'docker rm --force AchiStarTechnologies'
 def dockerRun = 'docker run -p 5000:5000 -d -t --name AchistarTecnologies2 johnsoncls2019/springboot'
-withAWSParameterStore(credentialsId: 'aws_server', regionName: 'us-east-2') {
+withCredentials([aws(accessKeyVariable: 'AKIAZEX4M52X46CTAZUA', credentialsId: 'aws_server', secretKeyVariable: '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')]) {
 "${dockerRemove}"
 "${dockerRun}"
 }
 }
 stage ('Run container on Dev server') {
+def dockerRemove = 'docker rm --force AchiStarTechnologies1'
 def dockerRun = 'docker run -p 5000:5000 -d  -t --name AchiStarTechnologies1 johnsoncls2019/springboot'
 sshagent(['dev-server']) {
 sh "ssh -o StrictHostKeyChecking=no root@192.168.44.129 ${dockerRun}"
