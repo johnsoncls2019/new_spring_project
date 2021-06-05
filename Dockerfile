@@ -1,19 +1,14 @@
-#
-# Build stage
-#
-FROM maven:3.6.3-jdk-11-slim AS build
-MAINTAINER johnsoncls
-COPY pom.xml /build/
-COPY src /build/src/
-RUN mvn -f /build/pom.xml clean package
+FROM adoptopenjdk:11-jre-hotspot as builder
+WORKDIR application
+ARG JAR_FILE=target/*.jar
+COPY ${JAR_FILE} application.jar
+RUN java -Djarmode=layertools -jar application.jar extract
 
-WORKDIR /build/
-RUN mvn package
-# Package stage
-
-FROM openjdk:11-jre-slim
-WORKDIR /build/
-COPY --from=build /build/target/demo-0.0.1-SNAPSHOT.jar /demo.jar 
-EXPOSE 5000 
-ENTRYPOINT ["java", "-jar", "/build/demo-0.0.1-SNAPSHOT.jar"] 
+FROM adoptopenjdk:11-jre-hotspot
+WORKDIR application
+COPY --from=builder application/dependencies/ ./
+COPY --from=builder application/snapshot-dependencies/ ./
+COPY --from=builder application/resources/ ./
+COPY --from=builder application/application/ ./
+ENTRYPOINT ["java", "org.springframework.boot.loader.JarLauncher"]
 
